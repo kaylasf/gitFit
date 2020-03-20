@@ -1,0 +1,12 @@
+.greyMe{
+    background-color: grey;
+    border-color: lime;
+}
+.title{
+    color: lime;
+    font-family: 'Roboto Mono', monospace
+}
+.blueMe{
+background-color: #2544db;
+
+}

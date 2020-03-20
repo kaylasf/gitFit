@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport">
+  <title>Mongoose</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+  <link href="./style/index.css" rel="stylesheet">
+
+</head>
+
+<body style="background-color: #292929">
+
+  <div class="container text-center">
+    <h2 class="title">gitFit </h2>
+
+    <div class="row">
+      <button class="btn btn-lg title blueMe btn-block blueMe" id="prevWorkout" type="submit">Add To Previous
+        Routine</button>
+      <button class="btn btn-lg title blueMe  btn-block blueMe" id="newWorkout" type="submit">Create New
+        Routine</button>
+    </div>
+    <!-- style="display: none;" -->
+    <div class="jumbotron mt-5 mb-0 newForm" style="display: none;">
+      <div class="row">
+        <a class="btn btn-primary btn-sm hide" href="#" role="button">Hide</a>
+      </div>
+      <h1 class="display-4">Build Routine</h1>
+
+      <!-- FORM STARTS HERE! -->
+      <form action="/submit" method="post">
+
+        <!-- <div class="form-group">
+          <label for="exampleFormControlSelect1">Excercise Type</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Resistance</option>
+            <option>Cardio</option>
+            <option>Super Set</option>
+          </select>
+        </div> -->
+        <div class="form-group">
+          <label for="routineName">Routine Name</label>
+          <input type="text" class="form-control" name="routineName" id="routineName" placeholder="Booty Crusher" />
+        </div>
+
+
+        <!-- CARDIO SECTION -->
+        <div class="row">
+          <h2>Cardio</h2>
+        </div>
+        <div class="form-group">
+          <label for="cardioName">Cardio Excercise:</label>
+          <input type="text" class="form-control" name="cardioName" id="cardioName" placeholder="Running" />
+        </div>
+        <div class="form-group">
+          <label for="distance">Distance (miles):</label>
+          <input type="number" class="form-control" name="distance" id="distance" placeholder="2" />
+        </div>
+        <div class="form-group">
+          <label for="cardioDuration">Duration (minutes):</label>
+          <input type="number" class="form-control" name="cardioDuration" id="cardioDuration" placeholder="5" />
+        </div>
+        <div class="row text-right pb-1">
+          <button type="button" id="cardioAdd" class="btn btn-primary btn-sm">Add Excercise</button>
+        </div>
+
+
+
+
+        <!-- WEIGHT TRAINING SECTION -->
+        <div class="row">
+          <h2>Weight Training</h2>
+        </div>
+        <div class="form-group">
+          <label for="weightName">Weight Training Excercise:</label>
+          <input type="text" class="form-control" name="weightName" id="weightName" placeholder="Bench Press" />
+        </div>
+        <div class="form-group">
+          <label for="weight">Weight (lbs):</label>
+          <input type="number" class="form-control" name="weight" id="weight" placeholder="10" />
+        </div>
+        <div class="form-group">
+          <label for="sets">Sets:</label>
+          <input type="number" class="form-control" name="sets" id="sets" placeholder="10" />
+        </div>
+        <div class="form-group">
+          <label for="reps">Reps:</label>
+          <input type="number" class="form-control" name="reps" id="reps" placeholder="10" />
+        </div>
+        <!-- <div class="form-group">
+          <label for="resistanceDuration">Duration (minutes):</label>
+          <input type="number" class="form-control" name="resistanceDuration" id="resistanceDuration" placeholder="5" />
+        </div> -->
+        <div class="row align-items-right">
+          <button type="button" id="weightAdd" class="btn btn-primary btn-sm">Add Excercise</button>
+        </div>
+
+    </div>
+    </form>
+    <div class="jumbotron mt-0 newForm" style="display: none;">
+
+      <div class="card weightCard mb-3">
+
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">
+              <h5>Bench Press</h5>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary btn-sm">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-6">
+              <p class="card-text">Weight:</p>
+            </div>
+            <div class="col-6">
+              <p class="card-text">Sets</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p class="card-text">Reps:</p>
+            </div>
+            <div class="col-6">
+              <p class="card-text">Duration:</p>
+            </div>
+          </div>
+        
+        
+        </div>
+      
+      </div>
+
+      <div class="card cardioCard mb-3">
+
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">
+              <h5>Running</h5>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary btn-sm">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <p class="card-text">Distance:</p>
+            </div>
+            <div class="col-6">
+              <p class="card-text">Duration:</p>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+
+      <a class="btn btn-primary btn-lg mt-5" href="#" role="button">Submit Routine</a>
+      <div class="row">
+        <a class="btn btn-primary btn-sm hide" href="#" role="button">Hide</a>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+  </div>
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
