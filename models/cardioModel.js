@@ -7,15 +7,11 @@ const CardioSchema = new Schema({
     type: String,
     required: true
   },
-  weight: {
+  distance: {
     type: Number,
     required: true
   },
-  sets: {
-    type: Number,
-    required: true
-  },
-  reps: {
+  duration: {
     type: Number,
     required: true
   }

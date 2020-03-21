@@ -3,15 +3,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ResistanceSchema = new Schema({
+ 
+
   name: {
     type: String,
     required: true
   },
-  distance: {
+  weight: {
     type: Number,
     required: true
   },
-  duration: {
+  sets: {
+    type: Number,
+    required: true
+  },
+  reps: {
     type: Number,
     required: true
   }

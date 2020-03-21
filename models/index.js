@@ -3,5 +3,6 @@
 module.exports = {
     Resistance: require("./resistanceModel"),
     Cardio: require("./cardioModel"),
-    Routine: require("./routineModel")
+    Routine: require("./routineModel"),
+    Exercises: require("./exercisesModel")
   };

@@ -10,17 +10,10 @@ const RoutineSchema = new Schema({
   exercises: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Resistance",
-      required: false
-      
-    },
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Cardio",
+      ref: "Exercises",
       required: false
 
     }
- 
   ]
 });
 
