@@ -26,24 +26,20 @@
       <button class="btn btn-lg title blueMe  btn-block blueMe" id="newWorkout" type="submit">Create New
         Routine</button>
     </div>
+
+
     <!-- style="display: none;" -->
     <div class="jumbotron mt-5 mb-0 newForm" style="display: none;">
-      <div class="row">
+      <!-- <div class="row">
         <a class="btn btn-primary btn-sm hide" href="#" role="button">Hide</a>
-      </div>
+      </div> -->
+
+
+
       <h1 class="display-4">Build Routine</h1>
 
       <!-- FORM STARTS HERE! -->
-      <form action="/submit" method="post">
-
-        <!-- <div class="form-group">
-          <label for="exampleFormControlSelect1">Excercise Type</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Resistance</option>
-            <option>Cardio</option>
-            <option>Super Set</option>
-          </select>
-        </div> -->
+      <form>
         <div class="form-group">
           <label for="routineName">Routine Name</label>
           <input type="text" class="form-control" name="routineName" id="routineName" placeholder="Booty Crusher" />
@@ -64,7 +60,7 @@
         </div>
         <div class="form-group">
           <label for="cardioDuration">Duration (minutes):</label>
-          <input type="number" class="form-control" name="cardioDuration" id="cardioDuration" placeholder="5" />
+          <input type="number" class="form-control" name="cardioDuration" id="duration" placeholder="5" />
         </div>
         <div class="row text-right pb-1">
           <button type="button" id="cardioAdd" class="btn btn-primary btn-sm">Add Excercise</button>
@@ -93,85 +89,39 @@
           <label for="reps">Reps:</label>
           <input type="number" class="form-control" name="reps" id="reps" placeholder="10" />
         </div>
-        <!-- <div class="form-group">
-          <label for="resistanceDuration">Duration (minutes):</label>
-          <input type="number" class="form-control" name="resistanceDuration" id="resistanceDuration" placeholder="5" />
-        </div> -->
         <div class="row align-items-right">
           <button type="button" id="weightAdd" class="btn btn-primary btn-sm">Add Excercise</button>
         </div>
 
     </div>
     </form>
-    <div class="jumbotron mt-0 newForm" style="display: none;">
 
-      <div class="card weightCard mb-3">
 
-        <div class="card-header">
-          <div class="row">
-            <div class="col-6">
-              <h5>Bench Press</h5>
-            </div>
-            <div class="col-6">
-              <button type="button" class="btn btn-secondary btn-sm">Delete</button>
-            </div>
-          </div>
-        </div>
 
-        <div class="card-body">
 
-          <div class="row">
-            <div class="col-6">
-              <p class="card-text">Weight:</p>
-            </div>
-            <div class="col-6">
-              <p class="card-text">Sets</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <p class="card-text">Reps:</p>
-            </div>
-            <div class="col-6">
-              <p class="card-text">Duration:</p>
-            </div>
-          </div>
-        
-        
-        </div>
-      
-      </div>
+    <div class="jumbotron mt-0 submitForm " style="display: none;">
 
-      <div class="card cardioCard mb-3">
+      <div id="cardsGoHere"></div>
 
-        <div class="card-header">
-          <div class="row">
-            <div class="col-6">
-              <h5>Running</h5>
-            </div>
-            <div class="col-6">
-              <button type="button" class="btn btn-secondary btn-sm">Delete</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-body">
-          <div class="row">
-            <div class="col-6">
-              <p class="card-text">Distance:</p>
-            </div>
-            <div class="col-6">
-              <p class="card-text">Duration:</p>
-            </div>
-          </div>
-        </div>
-      
-      </div>
-
-      <a class="btn btn-primary btn-lg mt-5" href="#" role="button">Submit Routine</a>
-      <div class="row">
+      <a class="btn btn-primary btn-lg mt-5" href="#" id="postRoutine" role="button">Submit Routine</a>
+      <!-- <div class="row">
         <a class="btn btn-primary btn-sm hide" href="#" role="button">Hide</a>
-      </div>
+      </div> -->
+    </div>
+
+
+
+    <!-- ROUTINE GOES HERE -->
+    <div class="jumbotron mt-0 submitForm ">
+
+      <div id="routineHere"></div>
+
+
+
+      <a class="btn btn-primary btn-lg mt-5" href="#" id="completeRoutine" role="button">Completed Routine</a>
+      <!-- <div class="row">
+        <a class="btn btn-primary btn-sm hide" href="#" role="button">Hide</a>
+      </div> -->
     </div>
 
 

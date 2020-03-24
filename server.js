@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/gitFit", { useN
 
 //CREATE ROUTINE
 app.post("/api/routine", (req, res) => {
-  console.log(`this is body: ${JSON.stringify(req.body.name)} this is res ${res}`)
+  console.log(`this is body: ${JSON.stringify(req.body.name)} `)
   const routineName = req.body.name
 
   db.Routine.create({ name: routineName })
@@ -34,17 +34,7 @@ app.post("/api/routine", (req, res) => {
 });
 
 
-//  create new exercise and updating Routines "exercise" field with it
-app.post("/exercise/:id", (req, res) => {
-  db.Exercises.create(req.body)
-    .then(({ _id }) => db.Routine.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: _id } }, { new: true }))
-    .then(dbRoutine => {
-      res.json(dbRoutine);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+
 
 //Get all routines
 app.get("/routine", (req, res) => {
@@ -56,6 +46,7 @@ app.get("/routine", (req, res) => {
       res.json(err);
     });
 });
+
 
 
 //Get all exercises
@@ -85,6 +76,45 @@ app.delete('/routine/:id', (req, res) => {
   });
 
 })
+
+//get routine by id && update body? 
+app.post('/routine/:id',(req,res) =>{
+  db.Routine.find({
+    _id: req.params.id
+  })
+  .then(({ _id }) => db.Routine.findOneAndUpdate({ _id: req.params.id }, { name: req.body.name, completed: req.body.completed }, { new: true }))
+
+  .then(dbRoutine=>{
+    res.json(dbRoutine)
+  }).catch(err=>{
+    res.json(err)
+  })
+  
+  })
+
+//  create new exercise and updating Routines "exercise" field with it
+app.post("/exercise/:id", (req, res) => {
+
+  console.log('this is res.body ' + JSON.stringify(req.body))
+  const anothaOne = `name: ${req.body.name}, duration: ${req.body.duration}`
+ 
+  db.Exercises.create(req.body)
+  
+    .then(({}) => db.Routine.findByIdAndUpdate( req.params.id , { $push:  {exercises:  req.body} },{ new: true }))
+    .then(dbRoutine => {
+      res.json(dbRoutine);
+
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+
+
+
+
+
 
 //Delete Exercise
 
