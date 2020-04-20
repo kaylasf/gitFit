@@ -58,16 +58,16 @@ function addCardio() {
         duration: duration.value
     }
     $.post(`/exercise/${routineId}`, cardio, function (res) {
-        console.log(res)
-
-        const cardioCard = document.createElement('div')
-        cardioCard.innerHTML = `
+        console.log(res.exercises)
+        for (let i = 0; i < res.exercises.length; i++) {
+            const cardioCard = document.createElement('div')
+            cardioCard.innerHTML = `
 <div class="card cardioCard mb-3">
 
          <div class="card-header">
            <div class="row">
              <div class="col-6">
-               <h5>${res.value.name}</h5>
+               <h5>${res.exercises[i].name}</h5>
              </div>
              <div class="col-6">
                <button type="button" class="btn btn-secondary btn-sm">Delete</button>
@@ -78,21 +78,26 @@ function addCardio() {
          <div class="card-body">
            <div class="row">
              <div class="col-6">
-               <p class="card-text">Distance: ${res.value.distance}</p>
+               <p class="card-text">Distance: ${res.exercises[i].distance}</p>
              </div>
              <div class="col-6">
-               <p class="card-text">Duration: ${res.value.duration}</p>
+               <p class="card-text">Duration: ${res.exercises[i].duration}</p>
              </div>
            </div>
          </div>
      
        </div>
 `
-        document.getElementById("cardsGoHere").appendChild(cardioCard)
+document.getElementById("cardsGoHere").appendChild(cardioCard)
+          
+        
+        }   
+
         cardioeName.value = ""
         distance.value = ""
         duration.value = ""
     })
+
 
 }
 cardioAdd.addEventListener("click", addCardio)
@@ -107,7 +112,7 @@ function addWeight() {
     }
     $.post(`/exercise/${routineId}`, weightExercise, function (res) {
         console.log(res)
-
+        for (let j = 0; j < res.exercises.length; j++) {
         const weightCard = document.createElement('div')
         weightCard.innerHTML = `
         <div class="card weightCard mb-3">
@@ -115,7 +120,7 @@ function addWeight() {
         <div class="card-header">
           <div class="row">
             <div class="col-6">
-              <h5>${res.value.name}</h5>
+              <h5>${res.exercises[j].name}</h5>
             </div>
             <div class="col-6">
               <button type="button" class="btn btn-secondary btn-sm">Delete</button>
@@ -127,15 +132,15 @@ function addWeight() {
 
           <div class="row">
             <div class="col-6">
-              <p class="card-text">Weight:${res.value.weight}</p>
+              <p class="card-text">Weight:${res.exercises[j].weight}</p>
             </div>
             <div class="col-6">
-              <p class="card-text">Sets:${res.value.sets}</p>
+              <p class="card-text">Sets:${res.exercises[j].sets}</p>
             </div>
           </div>
           <div class="row">
             <div class="col-6">
-              <p class="card-text">Reps:${res.value.reps}</p>
+              <p class="card-text">Reps:${res.exercises[j].reps}</p>
             </div>
            
           </div>
@@ -151,6 +156,8 @@ function addWeight() {
         weight.value = ""
         sets.value = ""
         reps.value = ""
+        }
+
     })
 
 }
@@ -178,7 +185,7 @@ function addRoutine() {
     </div>
     </div>`
 
-    document.getElementById("routineHere").appendChild(routineCard)
+        document.getElementById("routineHere").appendChild(routineCard)
     })
 }
 
